@@ -1,0 +1,144 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: apk-threat-postgres
+    environment:
+      POSTGRES_USER: ${DB_USER:-apk_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-apk_password}
+      POSTGRES_DB: ${DB_NAME:-apk_threat}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER:-apk_user} -d ${DB_NAME:-apk_threat}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - apk-threat-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: apk-threat-redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redis_password}
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-redis_password}", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - apk-threat-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: apk-threat-backend
+    environment:
+      DATABASE_URL: postgresql://${DB_USER:-apk_user}:${DB_PASSWORD:-apk_password}@postgres:5432/${DB_NAME:-apk_threat}
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_password}@redis:6379/0
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:3b}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      UPLOAD_DIR: /app/uploads
+      ANALYSIS_WORK_DIR: /app/analysis_results
+      REPORTS_DIR: /app/reports
+      ENABLE_DYNAMIC_ANALYSIS: ${ENABLE_DYNAMIC_ANALYSIS:-false}
+      EMULATOR_HOST: ${EMULATOR_HOST:-}
+      CORS_ORIGINS: http://localhost,http://localhost:3000,http://127.0.0.1
+      MAX_UPLOAD_SIZE_MB: ${MAX_UPLOAD_SIZE_MB:-500}
+      VIRUSTOTAL_API_KEY: ${VIRUSTOTAL_API_KEY:-}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - apk_uploads:/app/uploads
+      - analysis_results:/app/analysis_results
+      - apk_reports:/app/reports
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    networks:
+      - apk-threat-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        BACKEND_INTERNAL_URL: http://backend:8000
+    container_name: apk-threat-frontend
+    environment:
+      # Empty = browser uses same-origin /api/v1 via nginx or Next rewrites
+      NEXT_PUBLIC_API_URL: ""
+      BACKEND_INTERNAL_URL: http://backend:8000
+      NEXT_PUBLIC_APP_NAME: APK Threat Intelligence Platform
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - apk-threat-network
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: apk-threat-ollama
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - apk-threat-network
+    restart: unless-stopped
+    command: serve
+
+  nginx:
+    image: nginx:alpine
+    container_name: apk-threat-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - apk-threat-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  ollama_data:
+  apk_uploads:
+  analysis_results:
+  apk_reports:
+  android_data:
+
+networks:
+  apk-threat-network:
+    driver: bridge
