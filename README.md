@@ -66,6 +66,17 @@ $ ls /features
 ▸ Threat Prioritization
 ```
 
+##📸 Screenshots
+
+<img width="1360" height="603" alt="Screenshot 2026-06-11 042645" src="https://github.com/user-attachments/assets/74595d94-685b-47c9-8c13-e0eb70feb22c" />
+<img width="1024" height="485" alt="image" src="https://github.com/user-attachments/assets/69305060-46d6-4211-80c1-25a924d6c1ab" />
+<img width="1025" height="457" alt="image" src="https://github.com/user-attachments/assets/2ea6dc3e-ca8d-459e-b84d-6b70c6881ce2" />
+<img width="1066" height="763" alt="image" src="https://github.com/user-attachments/assets/6501e0e3-1e8d-4b1e-863c-3b17878926e8" />
+<img width="1018" height="365" alt="image" src="https://github.com/user-attachments/assets/2f5bfc63-b96a-46a5-98d1-65d0198dcef2" />
+<img width="1019" height="378" alt="image" src="https://github.com/user-attachments/assets/181a09b4-00ca-4d84-9b2a-c6ac338876b4" />
+<img width="1013" height="456" alt="image" src="https://github.com/user-attachments/assets/1e5232a0-2c42-43bc-9cda-3141bf8822c9" />
+<img width="649" height="664" alt="image" src="https://github.com/user-attachments/assets/e6df060c-7569-4a2e-b3b7-72d98ba27045" />
+
 ---
 
 ## 🏗️ Architecture
