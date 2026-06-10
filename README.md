@@ -209,9 +209,9 @@ apk-threat-intelligence/
 ## 🚀 Quick Start
 
 ```bash
-$ git clone https://github.com/yourusername/apk-threat-intelligence.git
+$ git clone https://github.com/Zentrix006/APK-Threat-Detection.git
 
-$ cd apk-threat-intelligence
+$ cd APK-Threat-Detection
 
 $ docker-compose up -d
 ```
