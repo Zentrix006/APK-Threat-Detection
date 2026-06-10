@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # APK Threat Intelligence Platform
 
 A comprehensive platform for analyzing Android APK files, detecting threats, and generating AI-powered threat intelligence reports.
@@ -315,3 +316,7 @@ MIT License - see LICENSE file for details
 - JADX for Java decompiler
 - Frida team for dynamic instrumentation
 - The security research community
+=======
+# APK-Threat-Detection
+AI-powered Android malware analysis platform with static & dynamic analysis, threat intelligence correlation, MITRE ATT&CK mapping, risk scoring, and explainable AI investigations.
+>>>>>>> a09d06cefcd472acda70bda924d4941469bb5e48
