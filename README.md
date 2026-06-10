@@ -1,322 +1,328 @@
-<<<<<<< HEAD
-# APK Threat Intelligence Platform
+# 🛡️ APK Threat Intelligence Platform
 
-A comprehensive platform for analyzing Android APK files, detecting threats, and generating AI-powered threat intelligence reports.
+<h1 align="center">🛡️ APK Threat Intelligence Platform</h1>
+<h3 align="center">AI-Powered Android Malware Analysis • Threat Intelligence • Dynamic Analysis</h3>
 
-## Features
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=Android+Malware+Analysis+Platform;Static+%26+Dynamic+Analysis;Threat+Intelligence+Correlation;MITRE+ATT%26CK+Mapping;AI-Powered+Threat+Investigations&center=true&width=800&height=45&color=58A6FF&vCenter=true" />
+</p>
 
-✅ **APK Analysis**
-- Upload and reverse engineer APK files
-- Static analysis using MobSF, APKTool, JADX, Androguard
-- Extract URLs, IPs, and suspicious domains
+<p align="center">
+  <img src="https://img.shields.io/badge/Platform-Android-success?style=flat-square" />
+  <img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=flat-square&logo=fastapi" />
+  <img src="https://img.shields.io/badge/Next.js-Frontend-black?style=flat-square&logo=nextdotjs" />
+  <img src="https://img.shields.io/badge/PostgreSQL-Database-blue?style=flat-square&logo=postgresql" />
+  <img src="https://img.shields.io/badge/Redis-Cache-red?style=flat-square&logo=redis" />
+  <img src="https://img.shields.io/badge/Docker-Containerized-2496ED?style=flat-square&logo=docker" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" />
+</p>
 
-✅ **Dynamic Analysis**
-- Android Emulator integration
-- Frida instrumentation framework
-- ADB device communication
-- Network traffic capture (tcpdump)
-- C2 communication detection
-
-✅ **Threat Intelligence**
-- Automated risk scoring with XGBoost
-- MITRE ATT&CK framework mapping
-- Threat graph visualization (APK ↔ IP ↔ Domain)
-- ML-based malware classification
-
-✅ **AI-Powered Reporting**
-- Ollama + Qwen3 LLM integration
-- Auto-generated investigation reports
-- ReportLab PDF generation
-
-✅ **Database**
-- PostgreSQL for persistent storage
-- Redis for caching and queue management
-
-## Tech Stack
-
-### Frontend
-- Next.js 14
-- Tailwind CSS
-- ShadCN Components
-- Recharts for visualization
-
-### Backend
-- FastAPI (Python)
-- SQLAlchemy ORM
-- Pydantic validation
-
-### Analysis Tools
-- MobSF - Mobile Security Framework
-- APKTool - APK decompilation
-- JADX - Java decompiler
-- Androguard - APK analysis
-
-### ML/AI
-- XGBoost - Risk scoring
-- Ollama + Qwen3 - Report generation
-
-### Deployment
-- Docker & Docker Compose
-- Ubuntu 22.04
-- Nginx reverse proxy
-- PostgreSQL 15
-- Redis 7
-
-## Quick Start
-
-### Prerequisites
-- Docker & Docker Compose
-- Git
-- 8GB RAM minimum
-
-### Local Development
+---
 
 ```bash
-# Clone the repository
-git clone <repo>
-cd apk-threat-detection
+$ whoami
 
-# Start all services
-docker-compose up -d
-
-# Backend at: http://localhost:8000
-# Frontend at: http://localhost:3000
-# API docs: http://localhost:8000/docs
+🛡️ APK Threat Intelligence Platform
+🔍 Android Malware Analysis & Threat Investigation Framework
+⚡ Static + Dynamic Analysis + Threat Correlation
+🤖 AI-Powered Investigation Reports
+📊 MITRE ATT&CK Mapping & Risk Scoring
 ```
 
-### Manual Setup
+---
 
-**Backend:**
+## 🚀 Core Features
+
 ```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+$ ls /features
+
+📦 APK Analysis
+▸ Upload and reverse engineer APK files
+▸ Static analysis with MobSF, JADX, APKTool, Androguard
+▸ Extract URLs, IPs, Domains & Indicators of Compromise
+
+📱 Dynamic Analysis
+▸ Android Emulator Sandbox
+▸ Frida Runtime Instrumentation
+▸ ADB Integration
+▸ Network Traffic Monitoring
+▸ C2 Communication Detection
+
+🕸️ Threat Intelligence
+▸ IOC Correlation Engine
+▸ Threat Graph Visualization
+▸ MITRE ATT&CK Mapping
+▸ Malware Family Classification
+
+🤖 AI Investigation
+▸ Ollama + Qwen3 Integration
+▸ Explainable Threat Reports
+▸ Automated Analyst Summaries
+▸ PDF Report Generation
+
+📊 Risk Assessment
+▸ XGBoost Risk Scoring
+▸ Behavioral Analysis
+▸ Threat Prioritization
 ```
 
-**Frontend:**
+---
+
+## 🏗️ Architecture
+
 ```bash
-cd frontend
-npm install
-npm run dev
+$ cat architecture.txt
+
+┌─────────────┐
+│   Next.js   │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│    Nginx    │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│   FastAPI   │
+└──────┬──────┘
+       │
+ ┌─────┼─────┐
+ ▼     ▼     ▼
+Redis PostgreSQL Analysis
+ Cache Database Engines
+
+       │
+ ┌─────┼─────┐
+ ▼     ▼     ▼
+Static Dynamic AI/ML
 ```
 
-## API Endpoints
+---
 
-### APK Management
-- `POST /api/v1/apks/upload` - Upload APK
-- `GET /api/v1/apks/{apk_id}` - Get APK details
-- `GET /api/v1/apks/{apk_id}/analysis` - Get analysis results
+## ⚙️ Technology Stack
 
-### Analysis
-- `POST /api/v1/analysis/static` - Run static analysis
-- `POST /api/v1/analysis/dynamic` - Run dynamic analysis
-- `GET /api/v1/analysis/{analysis_id}/report` - Generate report
+```bash
+$ tech-stack
 
-### Threat Intelligence
-- `GET /api/v1/threats/graph/{apk_id}` - Threat graph
-- `GET /api/v1/threats/c2-detection` - C2 detection results
-- `GET /api/v1/threats/mitre-mapping` - MITRE ATT&CK mapping
+🌐 Frontend
+▸ Next.js 14
+▸ Tailwind CSS
+▸ ShadCN UI
+▸ Recharts
 
-## Architecture
+⚡ Backend
+▸ FastAPI
+▸ SQLAlchemy
+▸ Pydantic
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Frontend (Next.js)                    │
-│              Tailwind + ShadCN + Recharts               │
-└──────────────────────┬──────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────┐
-│                  API Gateway (Nginx)                     │
-└──────────────────────┬──────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────┐
-│              Backend API (FastAPI)                       │
-│  ┌──────────────────────────────────────────────────┐  │
-│  │ Routes: APKs, Analysis, Reports, Threats         │  │
-│  └──────────────────────────────────────────────────┘  │
-└─────────────┬─────────────────────────────────────────┘
-              │
-    ┌─────────┼─────────┬──────────┐
-    ▼         ▼         ▼          ▼
-┌────────┐ ┌──────┐ ┌─────────┐ ┌──────────┐
-│  APK   │ │Redis │ │PostgreSQL │ │ Analysis │
-│Storage │ │Cache │ │Database   │ │ Tools    │
-└────────┘ └──────┘ └─────────┘ └──────────┘
-                       │
-        ┌──────────────┼──────────────┐
-        ▼              ▼              ▼
-    ┌────────┐   ┌─────────┐   ┌──────────┐
-    │ Static │   │ Dynamic │   │ML/AI     │
-    │Analysis│   │Analysis │   │Analysis  │
-    └────────┘   └─────────┘   └──────────┘
+🛡️ Analysis Tools
+▸ MobSF
+▸ APKTool
+▸ JADX
+▸ Androguard
+▸ Frida
+▸ ADB
+
+🤖 AI / ML
+▸ Ollama
+▸ Qwen3
+▸ XGBoost
+
+🗄️ Infrastructure
+▸ PostgreSQL
+▸ Redis
+▸ Docker
+▸ Nginx
+▸ Ubuntu
 ```
 
-## Project Structure
+---
 
+## 🔬 Analysis Pipeline
+
+```bash
+$ run-analysis
+
+[1] Upload APK
+      │
+      ▼
+[2] Static Analysis
+      │
+      ▼
+[3] Dynamic Execution
+      │
+      ▼
+[4] IOC Extraction
+      │
+      ▼
+[5] Threat Correlation
+      │
+      ▼
+[6] Risk Scoring
+      │
+      ▼
+[7] MITRE ATT&CK Mapping
+      │
+      ▼
+[8] AI Investigation Report
+      │
+      ▼
+[9] Threat Graph Generation
+      │
+      ▼
+[10] PDF Export
 ```
-apk-threat-detection/
-├── frontend/               # Next.js application
-│   ├── app/               # App router pages
-│   ├── components/        # React components
-│   ├── lib/              # Utilities
-│   └── public/           # Static assets
+
+---
+
+## 📁 Project Structure
+
+```bash
+$ tree apk-threat-intelligence
+
+apk-threat-intelligence/
 │
-├── backend/              # FastAPI application
+├── frontend/
 │   ├── app/
-│   │   ├── api/          # Route handlers
-│   │   ├── analysis/     # Analysis engines
-│   │   ├── ml/           # ML models
-│   │   ├── ai/           # AI integrations
-│   │   ├── reporting/    # Report generation
-│   │   ├── db/           # Database models
-│   │   └── main.py       # FastAPI app
-│   ├── requirements.txt
-│   └── Dockerfile
+│   ├── components/
+│   ├── lib/
+│   └── public/
 │
-├── docker/               # Docker configurations
-│   ├── docker-compose.yml
-│   ├── nginx.conf
-│   └── .env.example
+├── backend/
+│   ├── api/
+│   ├── analysis/
+│   ├── ai/
+│   ├── ml/
+│   ├── reporting/
+│   ├── db/
+│   └── main.py
 │
-└── docs/                 # Documentation
-    ├── API.md
-    ├── SETUP.md
-    ├── ARCHITECTURE.md
-    └── ANALYSIS_PIPELINE.md
+├── docker/
+├── docs/
+├── screenshots/
+└── README.md
 ```
 
-## Configuration
+---
 
-See `.env.example` for environment variables:
-
-```env
-# Database
-DATABASE_URL=postgresql://user:password@db:5432/apk_threat
-REDIS_URL=redis://redis:6379/0
-
-# API Keys
-VIRUSTOTAL_API_KEY=
-SHODAN_API_KEY=
-
-# Analysis
-ANDROID_SDK_PATH=/opt/android-sdk
-FRIDA_SERVER_PORT=27042
-
-# AI/ML
-OLLAMA_URL=http://ollama:11434
-OLLAMA_MODEL=qwen3
-
-# Security
-JWT_SECRET=your-secret-key
-CORS_ORIGINS=http://localhost:3000
-```
-
-## Development
-
-### Backend Development
-```bash
-cd backend
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run tests
-pytest
-
-# Lint
-flake8 app/
-black app/
-
-# Run server
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-### Frontend Development
-```bash
-cd frontend
-
-# Install dependencies
-npm install
-
-# Run dev server
-npm run dev
-
-# Build for production
-npm run build
-npm start
-
-# Lint and format
-npm run lint
-npm run format
-```
-
-## Database Setup
-
-PostgreSQL migrations are automatically handled with Alembic:
+## 🚀 Quick Start
 
 ```bash
-# Create new migration
-alembic revision --autogenerate -m "description"
+$ git clone https://github.com/yourusername/apk-threat-intelligence.git
 
-# Apply migrations
-alembic upgrade head
+$ cd apk-threat-intelligence
+
+$ docker-compose up -d
 ```
 
-## Deployment
+### Services
 
-### Docker Compose (Recommended for Development)
 ```bash
-docker-compose up -d
+Frontend  : http://localhost:3000
+Backend   : http://localhost:8000
+Swagger   : http://localhost:8000/docs
+PostgreSQL: localhost:5432
+Redis     : localhost:6379
 ```
 
-### Kubernetes (Production)
-See `docs/DEPLOYMENT_K8S.md` for Kubernetes manifests.
+---
 
-### Manual Ubuntu Deployment
-See `docs/DEPLOYMENT_UBUNTU.md` for detailed setup instructions.
+## 📡 API Overview
 
-## Analysis Pipeline
+```bash
+$ curl api/v1
 
-1. **Upload** - User uploads APK file
-2. **Storage** - APK stored in PostgreSQL with metadata
-3. **Static Analysis** - MobSF/JADX/Androguard extract metadata
-4. **Dynamic Analysis** - Emulator executes APK with Frida instrumentation
-5. **Threat Detection** - Extract IPs, URLs, C2 communications
-6. **ML Scoring** - XGBoost calculates risk score
-7. **MITRE Mapping** - Map techniques to MITRE ATT&CK
-8. **AI Report** - Ollama/Qwen3 generates narrative report
-9. **Visualization** - Build threat graph (APK ↔ IP ↔ Domain)
-10. **Export** - Generate PDF report with ReportLab
+POST   /apks/upload
+GET    /apks/{id}
+GET    /apks/{id}/analysis
 
-## Contributing
+POST   /analysis/static
+POST   /analysis/dynamic
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+GET    /threats/graph/{id}
+GET    /threats/c2-detection
+GET    /threats/mitre-mapping
 
-## License
+GET    /reports/{id}
+```
 
-MIT License - see LICENSE file for details
+---
 
-## Support
+## 🛡️ Security Capabilities
 
-- 📖 [Documentation](./docs)
-- 🐛 [Report Issues](https://github.com/issues)
-- 💬 [Discussions](https://github.com/discussions)
+```bash
+$ capabilities
 
-## Acknowledgments
+🔍 Malware Behavior Analysis
+🌐 IOC Extraction & Correlation
+📡 Network Traffic Monitoring
+🎯 MITRE ATT&CK Mapping
+📊 Risk Scoring Engine
+🕵️ C2 Detection
+📑 Automated Reporting
+🤖 AI-Powered Investigations
+```
+## 🎯 Future Roadmap
 
-- MobSF Team for Mobile Security Framework
-- JADX for Java decompiler
-- Frida team for dynamic instrumentation
-- The security research community
-=======
-# APK-Threat-Detection
-AI-powered Android malware analysis platform with static & dynamic analysis, threat intelligence correlation, MITRE ATT&CK mapping, risk scoring, and explainable AI investigations.
->>>>>>> a09d06cefcd472acda70bda924d4941469bb5e48
+```bash
+$ roadmap
+
+[ ] VirusTotal Integration
+[ ] Shodan Intelligence Enrichment
+[ ] YARA Rule Engine
+[ ] Multi-APK Correlation
+[ ] Threat Hunting Dashboard
+[ ] Real Device Dynamic Analysis
+[ ] SIEM Integration
+[ ] Kubernetes Production Deployment
+```
+
+---
+
+## 🤝 Contributing
+
+```bash
+$ contribute
+
+1. Fork Repository
+2. Create Feature Branch
+3. Commit Changes
+4. Push Changes
+5. Open Pull Request
+```
+
+---
+
+## 🏆 Acknowledgements
+
+```bash
+$ credits
+
+▸ MobSF Team
+▸ Frida Project
+▸ JADX Team
+▸ Androguard Contributors
+▸ MITRE ATT&CK Framework
+▸ Open Source Security Community
+```
+
+---
+
+## 📜 License
+
+```bash
+$ cat LICENSE
+
+MIT License
+```
+
+---
+
+<p align="center">
+  <b>🛡️ Analyzing APKs • Correlating Threats • Building Intelligence</b>
+</p>
+
+<p align="center">
+  Made with ☕, Linux, and Threat Hunting
+</p>
